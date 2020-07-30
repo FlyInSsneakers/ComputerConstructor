@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Slider - Range with fixed minimum</title>
+
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+  <link rel="stylesheet" href="main.css">
+  <script src="js/filter_design.js"></script>
+  <script src="js/filter_logic.js"></script>
+  <script>
+    $( function() {
+      $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [ 75, 300 ],
+        slide: function( event, ui ) {
+          $( "#amount1" ).val( "$" + ui.values[ 0 ]  );
+          $( "#amount2" ).val( "$" + ui.values[ 1 ])
+        }
+      });
+      $( "#amount1" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ));
+      $( "#amount2" ).val( " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
+    } );
+  </script>
+</head>
+<body>
+ 
+  <p>
+    <label for="amount">Price range:</label>
+    <input type="text" id="amount1"  style="border:0; color:#f6931f; font-weight:bold;">
+    <input type="text" id="amount2" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  </p>
+  
+  <div id="slider-range"></div>
+  
+  
+</body>
+</html>

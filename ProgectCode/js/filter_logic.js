@@ -1,0 +1,146 @@
+	$.getScript("js/function_html/html_blocks.js"); 
+
+	$('[name="type_component"]').change(function() {
+
+		if ($('#mat').prop("checked")){
+			$.ajax({
+				url: '../php/test.php',
+				method: 'post',
+				dataType: 'html',
+				data: $("#form_attribute").serialize(),
+				success: function(data){
+
+					$('.message').html(data);
+				}
+			});
+		}
+
+		if ($('#gc').prop("checked")){
+			$.ajax({
+				url: '../php/test.php',
+				method: 'post',
+				dataType: 'json',
+				data: $("#form_attribute").serialize(),
+				success: function(data){
+					// $('.message').html(data);
+					$('.message').html(writeBlock(data));
+					$('.browsing').html(browsing(data[0]));
+				}
+			});
+		}
+	});
+
+
+	// if ($('#form_page').on("click", "#right_but",  function(){
+	// 	$.ajax({
+	// 		url: '../php/test.php',
+	// 		method: 'post',
+	// 		dataType: 'json',
+	// 		data: $("#form_attribute").serialize(),
+	// 		success: function(data){
+	// 				// $('.message').html(data);
+	// 				$('.message').html(writeBlock(data));
+	// 				$('.browsing').html(browsing(data[0]));
+	// 			}
+	// 		});
+	// });
+
+	$('#form_page').on("click", "#right_but",  function(){
+		
+		test = $("#form_attribute, #form_page").serialize();
+		$.ajax({
+			url: '../php/test.php',
+			method: 'post',
+			dataType: 'json',
+			data: $("#form_attribute, #right_but, #last_page").serialize(),
+			success: function(data){
+				// alert("блять");
+				$('.message').html(writeBlock(data));
+				$('.browsing').html(browsing(data[0]));
+			}
+		});
+	});
+
+
+	$('#form_page').on("click", "#left_but",  function(){
+		var NonFormValue = 5;
+		// block = {name: "e",value: "5"};
+		$.ajax({
+			url: '../php/test.php',
+			method: 'post',
+			dataType: 'json',
+			data: $("#form_attribute, #left_but, #last_page").serialize(),
+			success: function(data){
+				// alert("блять");
+				$('.message').html(writeBlock(data));
+				$('.browsing').html(browsing(data[0]));
+			}
+		});
+	});
+
+
+	$('[name="producer_gc[]"]').change(function() {
+		$.ajax({
+			url: '../php/test.php',
+			method: 'post',
+			dataType: 'json',
+			data: $("#form_attribute").serialize(),
+			success: function(data){
+					$('.message').html(writeBlock(data));
+					$('.browsing').html(browsing(data[0]));				
+				}
+			});
+	});
+
+	$('#price0').change(function() {
+		$.ajax({
+			url: '../php/test.php',
+			method: 'post',
+			dataType: 'json',
+			data: $("#form_attribute").serialize(),
+			success: function(data){
+					$('.message').html(writeBlock(data));
+					$('.browsing').html(browsing(data[0]));
+				}
+			});
+	});
+
+	$('#price1').change(function() {
+		$.ajax({
+			url: '../php/test.php',
+			method: 'post',
+			dataType: 'json',
+			data: $("#form_attribute").serialize(),
+			success: function(data){
+					$('.message').html(writeBlock(data));
+					$('.browsing').html(browsing(data[0]));
+				}
+			});
+	});
+
+
+	$('#slider-range').bind('mouseup', function() {
+		$.ajax({
+			url: '../php/test.php',
+			method: 'post',
+			dataType: 'json',
+			data: $("#form_attribute").serialize(),
+			success: function(data){
+					$('.message').html(writeBlock(data));
+					$('.browsing').html(browsing(data[0]));
+				}
+			});
+	});
+
+	$('.message').on('click', '.butt', function() {	
+		$.ajax({
+			url: '../php/test.php',
+			method: 'post',
+			dataType: 'html',
+			data: $($(this).closest("form_attribute")).serialize(),
+			success: function(data){
+				alert(data);
+						// $('.message').html(data);
+					}
+				});
+	});
