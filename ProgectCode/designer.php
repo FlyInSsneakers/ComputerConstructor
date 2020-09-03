@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="main.css">
 
 	<script src="js/main.js"></script>
+	<script src="js/jsCanvas/mainCanvas.js"></script>
 </head>
 <body>
 
@@ -32,50 +33,52 @@
 				</div>			
 				<div class="col-xl order-lg-1 col-lg col-md-3  order-sm-4 ml-
 				md-auto mr-xs-auto col-sm-6 col">
-					<a href="">Информация</a> 
-				</div>
-				<div class="col-xl order-lg-2 col-lg col-md-3 order-sm-7 ml-md-auto col-sm-6 col">
-					<a href="">Руководства</a>				
-				</div>
-				<div class="col-xl order-lg-3 col-lg col-md-2 ml-md-auto mr-md-auto order-md-1 d-md-block d-none">
-					<img src="img/01.png" alt="">
-				</div>
-				<div class="col-xl order-lg-4 col-lg col-md-5 order-sm-5 ml-md-auto mr-md-auto text_right col-sm-6 col">
-					<a href="seach.php">Комплектующие</a>				
-				</div>
-				<div class="col-xl order-lg-5 col-lg col-md-4 order-sm-8 mr-md-auto col-sm-6 col">
-					<a href="">Конструктор</a>				
-				</div> 
-				<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
-					<a href="">Авторизация</a>	
-				</div>
-				<div class="d-lg-none d-md-block w-100 order-sm-3 pd_t"></div>
-				<div class="d-lg-none d-md-block  w-100 order-sm-6 pd_t"></div>
-			</div>		
-		</div>
-	</header>
-
-	<section id="work_space">
-		<div class="row">
-			<div class="col-lg-2">
-				<div class="container">					
-
-				</div>
+				<a href="">Информация</a> 
 			</div>
-
-			<div class="col-lg-7">
-				<div class="container">					
-
-				</div>
+			<div class="col-xl order-lg-2 col-lg col-md-3 order-sm-7 ml-md-auto col-sm-6 col">
+				<a href="">Руководства</a>				
 			</div>
+			<div class="col-xl order-lg-3 col-lg col-md-2 ml-md-auto mr-md-auto order-md-1 d-md-block d-none">
+				<img src="img/01.png" alt="">
+			</div>
+			<div class="col-xl order-lg-4 col-lg col-md-5 order-sm-5 ml-md-auto mr-md-auto text_right col-sm-6 col">
+				<a href="seach.php">Комплектующие</a>				
+			</div>
+			<div class="col-xl order-lg-5 col-lg col-md-4 order-sm-8 mr-md-auto col-sm-6 col">
+				<a href="">Конструктор</a>				
+			</div> 
+			<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
+				<a href="">Авторизация</a>	
+			</div>
+			<div class="d-lg-none d-md-block w-100 order-sm-3 pd_t"></div>
+			<div class="d-lg-none d-md-block  w-100 order-sm-6 pd_t"></div>
+		</div>		
+	</div>
+</header>
 
-			<div class="col-lg-3">
-				<div class="container">					
+<section id="work_space">
+	<div class="row">
+		<div class="col-lg-2">
+			<div class="container">					
 
-				</div>
 			</div>
 		</div>
-	</section>
+
+		<div class="col-lg-7">
+			<div class="container">		
+				<canvas id="canvas" width="700" height="600"></canvas>		
+
+				<h2>xx</h2>
+			</div>
+		</div>
+
+		<div class="col-lg-3">
+			<div class="container">					
+
+			</div>
+		</div>
+	</div>
+</section>
 
 </body>
 </html>

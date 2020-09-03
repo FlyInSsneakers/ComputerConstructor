@@ -132,8 +132,9 @@ header{
 
 #work_space .container{
 	/*margin-top: 15px;*/
+	padding: 0;
 	border: 1.5px solid black;
-	height: 200px;
+	height: 600px;
 }
 
 
@@ -258,7 +259,8 @@ header{
 		/*padding-left: 15px;*/
 		/*padding-right: 15px;*/
 		min-height: 600px;
-		width: 1140px;
+		min-width: 1200px;
+		max-width: 1400px
 		/*border: 2px solid black;*/
 	}
 }
