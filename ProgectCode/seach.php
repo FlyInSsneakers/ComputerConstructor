@@ -83,7 +83,14 @@
 													</label>
 													<br>
 													<label>
-														<input type="radio" name="type_component" id="gc" value="gc">
+
+												
+														
+														<input type="radio" name="type_component" id="gc" value="gc" 
+														<?php session_start();
+														if(isset($_SESSION['component']) and $_SESSION['component']=='video'){
+														 ?>  
+														 checked <?php } ?> >
 														Видеокарта
 													</label>
 													<br>

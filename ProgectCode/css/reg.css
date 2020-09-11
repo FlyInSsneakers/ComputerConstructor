@@ -132,13 +132,42 @@ header{
 
 #work_space .container{
 	/*margin-top: 15px;*/
-	padding: 0;
 	border: 1.5px solid black;
-	height: 600px;
+	height: 200px;
 }
 
+.reg{
+  margin-top: 13%;
+  margin-left: 25%;
+}
 
+.form-control{
+	border: 1px solid #002014;
+}
 
+.back{
+	margin-top: 20px;
+}
+
+.reg h2{
+	text-align: center;
+}
+
+.nonactive{
+	border: 1px solid #002014;
+}
+
+.green:hover{
+	background-color: #09ab0e;
+}
+
+.grey:hover{
+	background-color: #595959;
+}
+
+.rit{
+	margin-left: 91px;
+}
 
 @media (max-width: 576px){
 
@@ -259,8 +288,7 @@ header{
 		/*padding-left: 15px;*/
 		/*padding-right: 15px;*/
 		min-height: 600px;
-		/*min-width: 1200px;*/
-		max-width: 1200px
+		width: 1140px;
 		/*border: 2px solid black;*/
 	}
 }

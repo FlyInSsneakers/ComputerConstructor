@@ -32,7 +32,7 @@
 					<a href="designer.php">Конструктор</a>				
 				</div> 
 				<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
-					<a href="">Авторизация</a>	
+					<a href="login.php">Авторизация</a>	
 				</div>
 				<div class="d-lg-none d-md-block w-100 order-sm-3 pd_t"></div>
 				<div class="d-lg-none d-md-block  w-100 order-sm-6 pd_t"></div>

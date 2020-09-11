@@ -1,4 +1,51 @@
-var i= 0;
+
+
+function WriteRezult(arr){
+
+	var rezultBlocks = "";
+	for (var i = arr.length - 1; i >= 0; i--) {
+		rezultBlocks += BlockRezult(arr[i]);
+	}
+	return rezultBlocks;
+
+
+}
+
+function BlockRezult(arr){
+
+return "<form> <div class='row'>"+
+			"<div class='col-12'>"+
+				"<h4>"+arr[3]+"</h4>"+
+			"</div>"+
+			"<div class='col-2'>"+
+
+			"</div>"+
+			"<div class='col-4'>"+
+				"<h4>"+arr[1]+"</h4>"+
+			"</div>"+
+			"<div class='col-1'>"+
+
+			"</div>"+
+			"<div class='col-3'>"+
+				"<div class='row'>"+
+					"<div class='col-3'><form>"+
+						"<input  name = 'id' reader value='"+arr[4]+"' style='display: none;'></input>"+
+						"<input  name = 'sign' reader value='-1' style='display: none;'></input>"+
+						"<button type='button' class='change' name= 'minus' value = '-1'>-</button>"+
+					"</form></div>"+
+					"<div class='col-3'>"+
+						"<h4>"+arr[2]+"</h4>"+
+					"</div>"+
+					"<div class='col-3'> <form>"+
+						"<input  name = 'id' reader value='"+arr[4]+"' style='display: none;'></input>"+
+						"<input  name = 'sign' reader value='1' style='display: none;'></input>"+
+						"<button type='button' class='change' name='sign' value = '1'>+</button>"+
+					"</form></div>"+
+				"</div>"+
+			"</div>"+
+		"</div> </form>";
+
+}
 
 function writeBlock(arr){
 	var rezultBlocks = "";
@@ -7,6 +54,8 @@ function writeBlock(arr){
 	}
 	return rezultBlocks;
 }
+
+
 
 function Block(arrBlock){
 
@@ -43,14 +92,17 @@ var block ="<form> <div class='component_box'>"+
 				"<div class='col-lg-2 not_padd'>"+			
 					"<div class='container_box' style='border-right: none;'>"+
 						"<div class='box'>"+
-						"<input name = 'but' reader value="+arrBlock[3]+" style='display: none;'></input>"+
+						"<div>"+
+						"<input name = 'id' reader value="+arrBlock[3]+" style='display: none;'></input>"+
+						"<input  name = 'group' reader value="+arrBlock[4]+" style='display: none;'></input>"+
 							"<button type='button' class='butt' name= 'but' value = "+arrBlock[3]+">В избранное</button>"+
-							"<h5></h5>"+
+							"<button type='button' class='butt' name= 'but' value = "+arrBlock[3]+" style='margin-top: 35px;'>В сборку</button>"+
+						"</div>"+
 						"</div>"+
 					"</div>"+
 				"</div>"+
 			"</div>"+							
-		"</div> </form>";
+			"</div> </form>";
 	return block;
 }
 

@@ -25,53 +25,102 @@ if (isset($_POST['but'])) {
 	echo $_POST['but'];
 }
 
+if (isset($_POST['type_component'])) {
 
-if (isset($_POST['type_component']) and $_POST['type_component']=='gc')	{
 
-	$link = mysqli_connect($host, $user, $password, $database)
-	or die("Ошибка " . mysqli_error($link));
 
-	$where ="";
+	if ($_POST['type_component']=='gc')	{
 
-	if (!empty($_POST['producer_gc'])) {
-		$whereBlock = "";			
-		$producer = $_POST['producer_gc'];
-		$n = count($producer);
-		for ($i=0; $i < $n ; $i++) { 
-			$whereBlock = addFilterCondition($whereBlock, "graphics_card.Производитель = '$producer[$i]'", false);
-		}	
+		$link = mysqli_connect($host, $user, $password, $database)
+		or die("Ошибка " . mysqli_error($link));
+
+		$where ="";
+
+		if (!empty($_POST['producer_gc'])) {
+			$whereBlock = "";			
+			$producer = $_POST['producer_gc'];
+			$n = count($producer);
+			for ($i=0; $i < $n ; $i++) { 
+				$whereBlock = addFilterCondition($whereBlock, "graphics_card.Производитель = '$producer[$i]'", false);
+			}	
+			$where = addFiterBlock($where, $whereBlock);
+		}
+
+		$price = $_POST["price0"];
+		$whereBlock = "";
+		$whereBlock = addFilterCondition($whereBlock, "graphics_card.Цена >= '$price'");
+		$price = $_POST["price1"];
+		$whereBlock = addFilterCondition($whereBlock, "graphics_card.Цена <= '$price'");
 		$where = addFiterBlock($where, $whereBlock);
+
+		$sql = "SELECT graphics_card.Наименование, graphics_card.Картинка, graphics_card.Цена, graphics_card.Код, graphics_card.Группа
+		FROM  `graphics_card`";
+
+		if ($where) $sql .= " WHERE $where";
+
 	}
 
-	$price = $_POST["price0"];
-	$whereBlock = "";
-	$whereBlock = addFilterCondition($whereBlock, "graphics_card.Цена >= '$price'");
-	$price = $_POST["price1"];
-	$whereBlock = addFilterCondition($whereBlock, "graphics_card.Цена <= '$price'");
-	$where = addFiterBlock($where, $whereBlock);
+	if ( $_POST['type_component']=='ssd'){
 
-	$sql = "SELECT graphics_card.Наименование, graphics_card.Картинка, graphics_card.Цена, graphics_card.Код
-	FROM  `graphics_card`";
+		$link = mysqli_connect($host, $user, $password, $database)
+		or die("Ошибка " . mysqli_error($link));
 
-	if ($where) $sql .= " WHERE $where";
+		$where ="";
 
-}
+		$price = $_POST["price0"];
+		$whereBlock = "";
+		$whereBlock = addFilterCondition($whereBlock, "ssd.Цена >= '$price'");
+		$price = $_POST["price1"];
+		$whereBlock = addFilterCondition($whereBlock, "ssd.Цена <= '$price'");
+		$where = addFiterBlock($where, $whereBlock);
 
-if(isset($_POST['type_component']) and $_POST['type_component']=='mat') {
-	$link = mysqli_connect($host, $user, $password, $database)
-	or die("Ошибка " . mysqli_error($link));
+		$sql = "SELECT ssd.Наименование, ssd.Картинка, ssd.Цена, ssd.Код, ssd.Группа
+		FROM  `ssd`";
 
-	$sql = "SELECT motherboard.Наименование, motherboard.Картинка, motherboard.Цена
-	FROM  `motherboard`";
+		if ($where) $sql .= " WHERE $where";
 
-	$result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
-	$rows = mysqli_num_rows($result);
+	}
 
-	for ($i=0; $i < 10; $i++) { 
+	if ( $_POST['type_component']=='hdd'){
 
-		$row = mysqli_fetch_row($result);
-		echo_block($row[0], $row[1], $row[2]);
-	}	
+		$link = mysqli_connect($host, $user, $password, $database)
+		or die("Ошибка " . mysqli_error($link));
+
+		$where ="";
+
+		$price = $_POST["price0"];
+		$whereBlock = "";
+		$whereBlock = addFilterCondition($whereBlock, "hdd.Цена >= '$price'");
+		$price = $_POST["price1"];
+		$whereBlock = addFilterCondition($whereBlock, "hdd.Цена <= '$price'");
+		$where = addFiterBlock($where, $whereBlock);
+
+		$sql = "SELECT hdd.Наименование, hdd.Картинка, hdd.Цена, hdd.Код, hdd.Группа
+		FROM  `hdd`";
+
+		if ($where) $sql .= " WHERE $where";
+
+	}
+
+	if(  $_POST['type_component']=='mat') {
+
+		$link = mysqli_connect($host, $user, $password, $database)
+		or die("Ошибка " . mysqli_error($link));
+
+		$where ="";
+
+		$price = $_POST["price0"];
+		$whereBlock = "";
+		$whereBlock = addFilterCondition($whereBlock, "motherboard.Цена >= '$price'");
+		$price = $_POST["price1"];
+		$whereBlock = addFilterCondition($whereBlock, "motherboard.Цена <= '$price'");
+		$where = addFiterBlock($where, $whereBlock);
+
+		$sql = "SELECT motherboard.Наименование, motherboard.Картинка, motherboard.Цена, motherboard.Код, motherboard.Группа
+		FROM  `motherboard`";
+
+		if ($where) $sql .= " WHERE $where";	
+	}
 }
 
 if(!empty($sql)){
@@ -80,7 +129,7 @@ if(!empty($sql)){
 	if(isset($_POST['current_page']) and $_POST['current_page'] <= $_POST['last_page']){
 		$current_page = $_POST['current_page'];
 		$skipping_lines = $column * ($current_page-1);
-		$sql .= " LIMIT $skipping_lines, 8";
+		$sql .= " LIMIT $skipping_lines, 10";
 	}
 	elseif (!isset($_POST['current_page']))
 		$current_page = 1;
@@ -103,7 +152,7 @@ if(!empty($sql)){
 	if ($rows != 0){
 		for ($i=0; $i < $column; $i++) {
 			$row = mysqli_fetch_row($result);
-			$block_res[] = 	array($row[0], $row[1], $row[2], $row[3]);
+			$block_res[] = 	array($row[0], $row[1], $row[2], $row[3], $row[4]);
 		}	
 	}
 
