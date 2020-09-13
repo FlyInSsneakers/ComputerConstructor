@@ -28,7 +28,6 @@ if (isset($_POST['but'])) {
 if (isset($_POST['type_component'])) {
 
 
-
 	if ($_POST['type_component']=='gc')	{
 
 		$link = mysqli_connect($host, $user, $password, $database)
@@ -58,6 +57,128 @@ if (isset($_POST['type_component'])) {
 
 		if ($where) $sql .= " WHERE $where";
 
+	}
+
+	if ( $_POST['type_component']=='cpu'){
+
+		$link = mysqli_connect($host, $user, $password, $database)
+		or die("Ошибка " . mysqli_error($link));
+
+		$where ="";
+
+		$price = $_POST["price0"];
+		$whereBlock = "";
+		$whereBlock = addFilterCondition($whereBlock, "cpu.Цена >= '$price'");
+		$price = $_POST["price1"];
+		$whereBlock = addFilterCondition($whereBlock, "cpu.Цена <= '$price'");
+		$where = addFiterBlock($where, $whereBlock);
+
+		$sql = "SELECT cpu.Наименование, cpu.Картинка, cpu.Цена, cpu.Код, cpu.Группа
+		FROM  `cpu`";
+
+		if ($where) $sql .= " WHERE $where";
+	}
+
+
+	if ( $_POST['type_component']=='cool'){
+
+		$link = mysqli_connect($host, $user, $password, $database)
+		or die("Ошибка " . mysqli_error($link));
+
+		$where ="";
+
+		$price = $_POST["price0"];
+		$whereBlock = "";
+		$whereBlock = addFilterCondition($whereBlock, "cool.Цена >= '$price'");
+		$price = $_POST["price1"];
+		$whereBlock = addFilterCondition($whereBlock, "cool.Цена <= '$price'");
+		$where = addFiterBlock($where, $whereBlock);
+
+		$sql = "SELECT cool.Наименование, cool.Картинка, cool.Цена, cool.Код, cool.Группа
+		FROM  `cool`";
+
+		if ($where) $sql .= " WHERE $where";
+	}
+
+
+	if ( $_POST['type_component']=='ram'){
+
+		$link = mysqli_connect($host, $user, $password, $database)
+		or die("Ошибка " . mysqli_error($link));
+
+		$where ="";
+
+		$price = $_POST["price0"];
+		$whereBlock = "";
+		$whereBlock = addFilterCondition($whereBlock, "ram.Цена >= '$price'");
+		$price = $_POST["price1"];
+		$whereBlock = addFilterCondition($whereBlock, "ram.Цена <= '$price'");
+		$where = addFiterBlock($where, $whereBlock);
+
+		$sql = "SELECT ram.Наименование, ram.Картинка, ram.Цена, ram.Код, ram.Группа
+		FROM  `ram`";
+
+		if ($where) $sql .= " WHERE $where";
+	}
+
+	if ( $_POST['type_component']=='bp'){
+
+		$link = mysqli_connect($host, $user, $password, $database)
+		or die("Ошибка " . mysqli_error($link));
+
+		$where ="";
+
+		$price = $_POST["price0"];
+		$whereBlock = "";
+		$whereBlock = addFilterCondition($whereBlock, "bp.Цена >= '$price'");
+		$price = $_POST["price1"];
+		$whereBlock = addFilterCondition($whereBlock, "bp.Цена <= '$price'");
+		$where = addFiterBlock($where, $whereBlock);
+
+		$sql = "SELECT bp.Наименование, bp.Картинка, bp.Цена, bp.Код, bp.Группа
+		FROM  `bp`";
+
+		if ($where) $sql .= " WHERE $where";
+	}
+
+	if ( $_POST['type_component']=='drive'){
+
+		$link = mysqli_connect($host, $user, $password, $database)
+		or die("Ошибка " . mysqli_error($link));
+
+		$where ="";
+
+		$price = $_POST["price0"];
+		$whereBlock = "";
+		$whereBlock = addFilterCondition($whereBlock, "drive.Цена >= '$price'");
+		$price = $_POST["price1"];
+		$whereBlock = addFilterCondition($whereBlock, "drive.Цена <= '$price'");
+		$where = addFiterBlock($where, $whereBlock);
+
+		$sql = "SELECT drive.Наименование, drive.Картинка, drive.Цена, drive.Код, drive.Группа
+		FROM  `drive`";
+
+		if ($where) $sql .= " WHERE $where";
+	}
+
+	if ( $_POST['type_component']=='casec'){
+
+		$link = mysqli_connect($host, $user, $password, $database)
+		or die("Ошибка " . mysqli_error($link));
+
+		$where ="";
+
+		$price = $_POST["price0"];
+		$whereBlock = "";
+		$whereBlock = addFilterCondition($whereBlock, "casec.Цена >= '$price'");
+		$price = $_POST["price1"];
+		$whereBlock = addFilterCondition($whereBlock, "casec.Цена <= '$price'");
+		$where = addFiterBlock($where, $whereBlock);
+
+		$sql = "SELECT casec.Наименование, casec.Картинка, casec.Цена, casec.Код, casec.Группа
+		FROM  `casec`";
+
+		if ($where) $sql .= " WHERE $where";
 	}
 
 	if ( $_POST['type_component']=='ssd'){
@@ -152,7 +273,8 @@ if(!empty($sql)){
 	if ($rows != 0){
 		for ($i=0; $i < $column; $i++) {
 			$row = mysqli_fetch_row($result);
-			$block_res[] = 	array($row[0], $row[1], $row[2], $row[3], $row[4]);
+			$name = implode(' ',explode("/", $row[0])); 
+			$block_res[] = 	array($name, $row[1], $row[2], $row[3], $row[4]);
 		}	
 	}
 

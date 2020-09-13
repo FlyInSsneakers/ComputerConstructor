@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="reg">
-            <form method="POST" action="">
+            <form method="POST" action="php/user/entry.php">
                 <div class="form-group row">
                     <div class="col-md-8">
                         <h2>Авторизация</h2>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-8">
-                        <input id="email" type="email" class="form-control" placeholder="Email" name="email">
+                        <input id="email" type="text" class="form-control" placeholder="Логин" name="login">
                     </div>
                 </div>
 

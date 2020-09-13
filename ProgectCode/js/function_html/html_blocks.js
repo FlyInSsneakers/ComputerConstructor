@@ -6,7 +6,10 @@ function WriteRezult(arr){
 	for (var i = arr.length - 1; i >= 0; i--) {
 		rezultBlocks += BlockRezult(arr[i]);
 	}
-	return rezultBlocks;
+
+	return "<div id='rezultblock'>"+ rezultBlocks +" </div>";
+
+	// return rezultBlocks;
 
 
 }
@@ -21,7 +24,7 @@ return "<form> <div class='row'>"+
 
 			"</div>"+
 			"<div class='col-4'>"+
-				"<h4>"+arr[1]+"</h4>"+
+				"<h4>"+arr[1]*arr[2]+" p.</h4>"+
 			"</div>"+
 			"<div class='col-1'>"+
 

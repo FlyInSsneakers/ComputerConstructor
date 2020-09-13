@@ -8,23 +8,30 @@ session_start();
 
 
 if(isset($_POST["id"])){
-	$component = ["SSD", "HDD", 'VideoCard', 'MotherBoard'];
+	$component = [ "VideoCard", "SSD", "HDD", "MotherBoard", "bp", "cooler", "ram", "cpu", "drive", "case"];
+	// $componentChnge = ["VideoCard", "SSD", "HDD", "ram"]
+
 
 	for ($i=0; $i < count($component); $i++) { 
 		if (isset($_SESSION[$component[$i]][0]) and $_SESSION[$component[$i]][0] == $_POST["id"]) {
 			if ($_SESSION[$component[$i]][1] == 1 and $_POST["sign"] < 0) {
 				unset($_SESSION[$component[$i]]);
 			}
-			else
-				$_SESSION[$component[$i]][1] = $_SESSION[$component[$i]][1] + $_POST["sign"];  
+			else{
+				if ($component[$i] == "VideoCard" or $component[$i]== "SSD" or $component[$i] == "HDD" or $component[$i] =="ram"){
+					$_SESSION[$component[$i]][1] = $_SESSION[$component[$i]][1] + $_POST["sign"]; 
+				}
+				else
+					exit();
+			} 
 		}
-	}	
-}
+	}
+}	
+
 
 $components = array();
 
 if (isset($_SESSION['VideoCard'])) {
-
 
 	$check = $_SESSION['VideoCard'][0];
 	$link = mysqli_connect($host, $user, $password, $database)
@@ -47,21 +54,69 @@ if (isset($_SESSION['VideoCard'])) {
 
 }
 
-if (isset($_SESSION['PoverSupply'])) {
+if (isset($_SESSION['bp'])) {
 
-	$components[] = array("bp", $_SESSION['PoverSupply']);
+	$check = $_SESSION['bp'][0];
+	$link = mysqli_connect($host, $user, $password, $database)
+	or die("Ошибка " . mysqli_error($link));
+
+	$sql = "SELECT bp.Код, bp.Наименование, bp.Цена, bp.Мощность, bp.Питание_материнской_платы_и_процессора, bp.Сертифицирован_в_стандарте, bp.Активный_PFC
+	FROM  `bp`
+	where bp.Код = $check";
+
+	$result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
+
+	$row = mysqli_fetch_row($result);
+
+	$poverSupply = new PoverSupply($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6]);
+
+	$components[] = array("bp", $row[2], $_SESSION['bp'][1], $row[1], $row[0]);
+
+	mysqli_close($link);
 
 }
 
-if (isset($_SESSION['CPU'])) {
+if (isset($_SESSION['cpu'])) {
 
-	$components[] = array("cpu", $_SESSION['PoverSupply']);
+	$check = $_SESSION['cpu'][0];
+	$link = mysqli_connect($host, $user, $password, $database)
+	or die("Ошибка " . mysqli_error($link));
+
+	$sql = "SELECT cpu.Код, cpu.Наименование, cpu.Цена, cpu.Socket, cpu.Тактовая_частота, cpu.Количество_ядер, cpu.Тепловыделение, cpu.Интегрированная_графика
+	FROM  `cpu`
+	where cpu.Код = $check";
+
+	$result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
+
+	$row = mysqli_fetch_row($result);
+
+	$poverSupply = new PoverSupply($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7]);
+
+	$components[] = array("cpu", $row[2], $_SESSION['cpu'][1], $row[1], $row[0]);
+
+	mysqli_close($link);
 
 }
 
-if (isset($_SESSION['Cooler'])) {
+if (isset($_SESSION['cooler'])) {
 
+	$check = $_SESSION['cooler'][0];
+	$link = mysqli_connect($host, $user, $password, $database)
+	or die("Ошибка " . mysqli_error($link));
 
+	$sql = "SELECT cool.Код, cool.Наименование, cool.Цена, cool.Скорость_вращения, cool.Размеры_кулера
+	FROM  `cool`
+	where cool.Код = $check";
+
+	$result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
+
+	$row = mysqli_fetch_row($result);
+
+	$cooler = new Cooler($row[0], $row[1], $row[2], $row[3], $row[4]);
+
+	$components[] = array("cooler", $row[2], $_SESSION['cooler'][1], $row[1], $row[0]);
+
+	mysqli_close($link);
 
 }
 
@@ -78,10 +133,6 @@ if (isset($_SESSION['MotherBoard'])) {
 	FROM  `motherboard`
 	where motherboard.Код = $check";
 
-	// $sql = "SELECT motherboard.Код, motherboard.Socket 
-	// FROM  `motherboard`
-	// where motherboard.Код = $check";
-
 	$result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
 
 	$row = mysqli_fetch_row($result);
@@ -96,9 +147,23 @@ if (isset($_SESSION['MotherBoard'])) {
 
 }
 
-if (isset($_SESSION['RAM'])) {
+if (isset($_SESSION['ram'])) {
 
+	$check = $_SESSION['ram'][0];
+	$link = mysqli_connect($host, $user, $password, $database)
+	or die("Ошибка " . mysqli_error($link));
 
+	$sql = "SELECT ram.Код, ram.Наименование, ram.Цена, ram.Объем, ram.Тип_памяти, ram.Частота_базовая
+	FROM  `ram`
+	where ram.Код = $check";
+
+	$result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
+	$row = mysqli_fetch_row($result);
+
+	$rAM = new RAM($row[0], $row[1], $row[2], $row[3], $row[4], $row[5]);
+	$components[] = array("ram", $row[2], $_SESSION['ram'][1], $row[1], $row[0]);
+
+	mysqli_close($link);
 
 }
 
@@ -129,7 +194,7 @@ if (isset($_SESSION['HDD'])) {
 
 	$sql = "SELECT hdd.Код, hdd.Наименование, hdd.Цена, hdd.Объем_накопителя, hdd.Форм_фактор
 	FROM  `hdd`
-	where hdd.Код = '$check'";
+	where hdd.Код = $check";
 
 	$result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
 	$row = mysqli_fetch_row($result);
@@ -142,30 +207,50 @@ if (isset($_SESSION['HDD'])) {
 
 }
 
-if (isset($_SESSION['OpticalDrive'])) {
+if (isset($_SESSION['drive'])) {
+
+	$check = $_SESSION['drive'][0];
+	$link = mysqli_connect($host, $user, $password, $database)
+	or die("Ошибка " . mysqli_error($link));
+
+	$sql = "SELECT drive.Код, drive.Наименование, drive.Цена
+	FROM  `drive`
+	where drive.Код = $check";
+
+	$result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
+	$row = mysqli_fetch_row($result);
+
+	$opticalDrive = new OpticalDrive($row[0], $row[1], $row[2]);
+
+	$components[] = array("drive", $row[2], $_SESSION['drive'][1], $row[1], $row[0]);
+
+	mysqli_close($link);
+
+}
 
 
+if (isset($_SESSION['case'])) {
+
+	$check = $_SESSION['case'][0];
+	$link = mysqli_connect($host, $user, $password, $database)
+	or die("Ошибка " . mysqli_error($link));
+
+	$sql = "SELECT casec.Код, casec.Наименование, casec.Цена,  casec.Форм_фактор
+	FROM  `casec`
+	where casec.Код = $check";
+
+	$result = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
+	$row = mysqli_fetch_row($result);
+
+	$caseComputer = new CaseComputer($row[0], $row[1], $row[2], $row[3]);
+
+	$components[] = array("case", $row[2], $_SESSION['case'][1], $row[1], $row[0]);
+
+	mysqli_close($link);
 
 }
 
-if (isset($_SESSION['Acccelerator'])) {
 
-
-
-}
-
-
-if (isset($_SESSION['Case'])) {
-
-
-
-}
-
-if (isset($_SESSION['LANcard'])) {
-
-
-
-}
 echo json_encode($components);
 
 

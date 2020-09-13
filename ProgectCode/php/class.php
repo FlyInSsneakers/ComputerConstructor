@@ -32,41 +32,42 @@ class CPU extends component
 {
 	
 	public $socet, $frequency, $numberOfCores, 	
-	$numberOfThreads, //количество потоков
+	// $numberOfThreads, //количество потоков
 	$tdp,// тепловыделение
-	$graphicsCore,
-	$compatibility; // совместимость
+	$graphicsCore;
+	// $compatibility; // совместимость
 
-	function __construct($id, $name, $price, $socet, $frequency, $numberOfCores, 	
-		$numberOfThreads, $tdp,	$graphicsCore, $compatibility)
+	function __construct($id, $name, $price, $socet, $frequency, $numberOfCores, 
+		$tdp,	$graphicsCore)
 	{
 		parent::__construct($id, $name, $price);
 		$this->socet = $socet;
 		$this->frequency = $frequency;
 		$this->numberOfCores = $numberOfCores;
-		$this->numberOfThreads = $numberOfThreads;
+		// $this->numberOfThreads = $numberOfThreads;
 		$this->tdp = $tdp;
 		$this->graphicsCore = $graphicsCore;
-		$this->compatibility = $compatibility;
+		// $this->compatibility = $compatibility;
 	}
 }
 
 class Cooler extends component
 {
 
-	public $tdp, //теплогашение 
+	public
+	 // $tdp, //теплогашение 
 	$mooveSpeed, //скорость вращеня
-	$compatibility, // совместимость
-	$hight; //высота
+	// $compatibility, // совместимость
+	$size; //высота
 
-	function __construct($id, $name, $price, $tdp,
-		$mooveSpeed, $compatibility, $hight)
+	function __construct($id, $name, $price,
+			$mooveSpeed, $size)
 	{
 		parent::__construct($id, $name, $price);
-		$this->tdp = $tdp;
+		// $this->tdp = $tdp;
 		$this->mooveSpeed = $mooveSpeed;
-		$this->graphicsCore = $graphicsCore;
-		$this->compatibility = $compatibility;
+		// $this->compatibility = $compatibility;
+		$this->size = $size;
 	}
 }
 
@@ -101,16 +102,20 @@ class MotherBoard extends component
 
 class RAM extends component
 {
-	public $size, $ddr, $frequency, $acceleration;
+	public $size, 
+	$ddr,
+	$frequency; 
+	// $acceleration;
 
 
-	function __construct($id, $name, $price, $size, $ddr, $frequency, $acceleration)
+	function __construct($id, $name, $price,
+	 $size,	$ddr, $frequency)
 	{
 		parent::__construct($id, $name, $price);
 		$this->size = $size;
 		$this->ddr = $ddr;
 		$this->frequency = $frequency;
-		$this->acceleration = $acceleration;
+		// $this->acceleration = $acceleration;
 	}
 }
 
@@ -142,13 +147,13 @@ class SSD extends component
 
 class OpticalDrive extends component
 {
-	public $formFactor,	$place; //внешний или внутренний
+	// public $formFactor,	$place; //внешний или внутренний
 
-	function __construct($id, $name, $price, $formFactor, $place)
+	function __construct($id, $name, $price)
 	{
 		parent::__construct($id, $name, $price);
-		$this->formFactor = $formFactor;
-		$this->place = $place;
+		// $this->formFactor = $formFactor;
+		// $this->place = $place;
 	}
 }
 
@@ -188,19 +193,19 @@ class Acccelerator extends component
 
 class CaseComputer	 extends component
 {
-	public $formFactor,	$usb, $usb3,
-	$externalPorts, //какие и сколько (массив)
-	$internalPorts;//какие и сколько (массив)
+	public $formFactor;
+	// $usb, $usb3,
+	// $externalPorts, //какие и сколько (массив)
+	// $internalPorts;//какие и сколько (массив)
 
-	function __construct($id, $name, $price, $formFactor,
-		$usb, $usb3,$externalPorts, $internalPorts)
+	function __construct($id, $name, $price, $formFactor)
 	{
 		parent::__construct($id, $name, $price);
 		$this->formFactor = $formFactor;
-		$this->usb = $usb;
-		$this->usb3 = $usb3;
-		$this->externalPorts = $externalPorts;
-		$this->internalPorts = $internalPorts;
+		// $this->usb = $usb;
+		// $this->usb3 = $usb3;
+		// $this->externalPorts = $externalPorts;
+		// $this->internalPorts = $internalPorts;
 	}
 }
 

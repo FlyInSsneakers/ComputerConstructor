@@ -137,7 +137,11 @@ header{
 	height: 600px;
 }
 
-
+#rezultblock{
+	height: 597px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
 
 
 @media (max-width: 576px){

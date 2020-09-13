@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="reg">
-        <form method="POST" action="">
+        <form method="POST" action="php/user/registration.php">
             <div class="form-group row">
                 <div class="col-md-8">
                     <h2>Регистрация</h2>

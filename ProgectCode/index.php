@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +16,7 @@
 		<div class="container-lg container-md-fluid ">
 			<div class="row align-items-center ">
 				<div class="col-xl-auto order-lg-0 col-lg offset-lg-0  ml-lg-0 col-md-3 order-sm-0 ml-md-auto col-sm-6 col-12">
-					<a href="">Главная</a>				
+					<a href="index.php">Главная</a>				
 				</div>			
 				<div class="col-xl order-lg-1 col-lg col-md-3  order-sm-4 ml-md-auto mr-xs-auto col-sm-6 col">
 					<a href="">Информация</a> 
@@ -31,15 +33,24 @@
 				<div class="col-xl order-lg-5 col-lg col-md-4 order-sm-8 mr-md-auto col-sm-6 col">
 					<a href="designer.php">Конструктор</a>				
 				</div> 
+				<?php if(isset($_SESSION["login"])){
+					?>
+					<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
+						<a href="login.php">Профиль</a>	
+					</div>
+				<?php } else{?>
+
+
 				<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
 					<a href="login.php">Авторизация</a>	
 				</div>
+				<?php } ?>
 				<div class="d-lg-none d-md-block w-100 order-sm-3 pd_t"></div>
 				<div class="d-lg-none d-md-block  w-100 order-sm-6 pd_t"></div>
 			</div>		
 		</div>
-
 	</header>
+
 	<section id="welcome">
 		<div class="container">
 			<div class="row">

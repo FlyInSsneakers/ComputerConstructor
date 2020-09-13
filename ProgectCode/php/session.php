@@ -3,13 +3,11 @@
 
 require_once 'base/connect_base.php';
 
-$group = [ "VideoCard", "SSD", "HDD", "MotherBoard"];
+$group = [ "VideoCard", "SSD", "HDD", "MotherBoard", "bp", "cooler", "ram", "cpu", "drive", "case"];
 
 $components = array();
 
 session_start();
-
-// echo $_POST["group"];
 
 if (isset($_POST["group"])) {
 	$num = $_POST["group"];
@@ -44,9 +42,5 @@ function checkComponent($group,$num){
 	else
 		echo "Изменить комплектующую?";
 }
-
-
-
-
 
 ?>
