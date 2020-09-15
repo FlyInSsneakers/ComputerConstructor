@@ -2,6 +2,9 @@
 require_once 'function/blok_box.php';
 require_once 'base/connect_base.php';
 
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+
 function addFilterCondition($where, $add, $and = true) {
 	if ($where) {
 		if ($and) $where .= " AND $add";
@@ -50,7 +53,20 @@ if (isset($_POST['type_component'])) {
 		$whereBlock = addFilterCondition($whereBlock, "graphics_card.Цена >= '$price'");
 		$price = $_POST["price1"];
 		$whereBlock = addFilterCondition($whereBlock, "graphics_card.Цена <= '$price'");
+		if (isset($_POST['seach']) and $_POST['seach']!="") {
+			$word = mysql_real_escape_string($_POST['seach']);
+			$whereBlock = addFilterCondition($whereBlock, "graphics_card.Наименование LIKE '%" . $word . "%'");
+		}
+		
+
 		$where = addFiterBlock($where, $whereBlock);
+
+		// никогда не доверяйте входящим данным! Фильтруйте всё!
+
+
+
+
+
 
 		$sql = "SELECT graphics_card.Наименование, graphics_card.Картинка, graphics_card.Цена, graphics_card.Код, graphics_card.Группа
 		FROM  `graphics_card`";

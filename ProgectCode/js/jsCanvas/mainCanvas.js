@@ -56,7 +56,6 @@ $(document).ready(function() {
 			dataType: 'text',
 			data: {text:name},
 			success: function(data){
-				alert(data);
 				document.location.href = "seach.php";
 			}
 		});
@@ -75,6 +74,22 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	$('#rezultForm').on('click', '.button', function() {	
+		$.ajax({
+			url: '../php/user/save_comp.php',
+			method: 'post',
+			dataType: 'json',
+			data: $(this).closest('form').serialize(),
+			success: function(data){
+				// $('#rezult').html(WriteRezult(color));
+				// draw(ctx, allBlock);
+				document.location.href = "designer.php";
+			}
+		});
+	});
+
+
 
 
 });	

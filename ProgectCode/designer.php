@@ -1,5 +1,5 @@
 	<?php
-		session_start();
+	session_start();
 	?>
 
 	<!DOCTYPE html>
@@ -20,7 +20,7 @@
 		<link rel="stylesheet" href="css/list_slide.css">
 		<link rel="stylesheet" href="main.css">
 
-		<script src="js/main.js"></script>
+		<!-- <script src="js/main.js"></script> -->
 		<script src="js/jsCanvas/mainCanvas.js"></script>
 	</head>
 	<body>
@@ -49,7 +49,7 @@
 				<?php if(isset($_SESSION["login"])){
 					?>
 					<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
-						<a href="login.php">Профиль</a>	
+						<a href="account.php">Профиль</a>	
 					</div>
 				<?php } else{?>
 
@@ -79,27 +79,37 @@
 			</div>
 
 			<div class="col-lg-4">
-				<div class="container">	
+				<div class="container_comp">	
 
-					<!-- <div class="row">
-						<div class=" col-12">
-
+					
+					<form id="rezultForm" method="POST" action="php/user/save_comp.php">
+						<div id="rezult" style="">						
+							<div class="row">
+								<div class=" col-6">
+									<h4>наименование</h4>
+								</div>
+								<div class="col-3">
+									<h4>цена</h4>
+								</div>
+								<div class="col-1">
+									<h4>кол</h4>
+								</div>
+							</div>
 						</div>
-					</div>		 -->		
-					<div id="rezult" style="">
-						
 						<div class="row">
-							<div class=" col-6">
-								<h4>наименование</h4>
+							<div class="col-7">
+								<input type="text" name="name" style="font-size: 25px;" class="save_button" 
+								<?php if(isset($_SESSION["name"])){?>	
+								value="<?=$_SESSION["name"]?>
+								<?php }?>">
 							</div>
-							<div class="col-3">
-								<h4>цена</h4>
-							</div>
-							<div class="col-1">
-								<h4>кол</h4>
+							<div class="col-5">
+								<button type="submit" class="save_button">
+									Сохранить сборку
+								</button>
 							</div>
 						</div>
-					</div>
+					</form>
 
 				</div>
 			</div>

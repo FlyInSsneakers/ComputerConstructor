@@ -62,7 +62,7 @@ function writeBlock(arr){
 
 function Block(arrBlock){
 
-var block ="<form> <div class='component_box'>"+
+var block ="<form class='complect'> <div class='component_box'>"+
 			"<div class='row' style='margin: 0px;'>"+
 				"<div class='col-lg-3 not_padd'>"+
 					"<div class='container_box'>"+
@@ -77,6 +77,7 @@ var block ="<form> <div class='component_box'>"+
 						"<div class='box'>"+
 							"<div>"+
 								"<h5>"+arrBlock[0]+"</h5>"+
+								"<h5>Артикул:"+arrBlock[3]+"</h5>"+
 								
 							"</div>"+
 						"</div>"+
@@ -86,8 +87,9 @@ var block ="<form> <div class='component_box'>"+
 					"<div class='container_box'>"+
 						"<div class='box'>"+
 							"<div>"+
-								"<h5>Цена: "+arrBlock[2]+"<br>	</h5>"+
-								"<h5>"+arrBlock[3]+"</h5>"+
+								"<h5 style='text-align: left;'>Цена:<br>	</h5>"+
+								"<h5 style='text-align: center;'>"+arrBlock[2]+"р.<br>	</h5>"+
+								
 							"</div>"+
 						"</div>"+
 					"</div>"+
@@ -98,8 +100,8 @@ var block ="<form> <div class='component_box'>"+
 						"<div>"+
 						"<input name = 'id' reader value="+arrBlock[3]+" style='display: none;'></input>"+
 						"<input  name = 'group' reader value="+arrBlock[4]+" style='display: none;'></input>"+
-							"<button type='button' class='butt' name= 'but' value = "+arrBlock[3]+">В избранное</button>"+
-							"<button type='button' class='butt' name= 'but' value = "+arrBlock[3]+" style='margin-top: 35px;'>В сборку</button>"+
+							// "<button type='button' class='butt' name= 'but' value = "+arrBlock[3]+">В избранное</button>"+
+							"<button type='button' class='butt' name= 'but' value = "+arrBlock[3]+" >В сборку</button>"+
 						"</div>"+
 						"</div>"+
 					"</div>"+
@@ -115,16 +117,16 @@ function browsing(arr){
 	var right = Number(arr[0]) + 1;
 	var last = arr[1];
 
-	var block = "<div class='row'>"+
-		"<button type='button' class='butt ml-auto mr-auto' id='left_but'>left</button>"+	
+	var block = "<div class='row' style='margin-top:15px;'>"+
+		"<button type='button' class='butt ml-auto mr-auto' id='left_but'><<<</button>"+	
 		"<input id='left_but' type='hidden' name='current_page' value="+left+" />"+
 		"<label>"+
-			"<input name='current_page' value="+arr[0]+" style='display:none;'>Текущая: "+arr[0]+""+ 
+			"<input name='current_page' value="+arr[0]+" style='display:none;'>"+arr[0]+""+ 
 		"</label>"+
 		"<label>"+
-			"<input id='last_page' name='last_page' value="+last+" style='display:none;'>Последняя: "+last+""+ 
+			"<input id='last_page' name='last_page' value="+last+" style='display:none;'>.../..."+last+""+ 
 		"</label>"+
-		"<button type='button' class='butt ml-auto mr-auto' id='right_but'>right</button>"+
+		"<button type='button' class='butt ml-auto mr-auto' id='right_but'>>>></button>"+
 		"<input  id='right_but' type='hidden' name='current_page' value="+right+" />"+
 	"</div>";
 

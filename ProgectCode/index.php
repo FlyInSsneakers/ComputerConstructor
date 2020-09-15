@@ -36,7 +36,7 @@
 				<?php if(isset($_SESSION["login"])){
 					?>
 					<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
-						<a href="login.php">Профиль</a>	
+						<a href="account.php">Профиль</a>	
 					</div>
 				<?php } else{?>
 
@@ -55,12 +55,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-6 col-lg-7 col-md-9 col-sm-12 col-7 ml-auto mr-auto">
-					<h1>Какая-то приветственная</h1>
+					<h1>Собери свой компьютер!</h1>
 				</div>
 				<div class=" w-100"></div>
 
 				<div class="col-xl-4 col-lg-4 col-md-5 col-sm-7 col-7 ml-auto mr-auto ">
-					<h1>информация!</h1>
+					<!-- <h1>информация!</h1> -->
 				</div>
 			</div>
 		</div>	
