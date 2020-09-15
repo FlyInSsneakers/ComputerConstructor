@@ -24,11 +24,10 @@ if (isset($_POST['login'])) {
 	}
 	else
 		$_SESSION["login"] = $login;
-	// header('Location: ../../index.php');
 
 }
 else
-	echo "сделай что-то";
+	echo "Что то пошло не так";
 
 
 ?>

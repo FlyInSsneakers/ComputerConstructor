@@ -55,12 +55,16 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-6 col-lg-7 col-md-9 col-sm-12 col-7 ml-auto mr-auto">
-					<h1>Собери свой компьютер!</h1>
+					<h3 style="text-align: center;">Вы можете ознакомится с руководствами по следующим ссылкам</h1>
 				</div>
 				<div class=" w-100"></div>
+				
 
 				<div class="col-xl-4 col-lg-4 col-md-5 col-sm-7 col-7 ml-auto mr-auto ">
-					<!-- <h1>информация!</h1> -->
+					<a href="https://3dnews.ru/953452" style="text-align: center; font-size: 25px; padding-left: 25px; margin-bottom: 55px;">Подбор комплектующих</a>
+					<a href="https://ichip.ru/sovety/ekspluataciya/kak-sobrat-kompyuter-samomu-iz-komplektuyushchih-spisok-715352" style="text-align: center; font-size: 25px; padding-left: 25px;">Как собрать компьютер самому из комплектующих</a>
+
+					<a href="https://www.ferra.ru/review/computers/how-to-build-a-computer.htm" style="text-align: center; font-size: 25px; padding-left: 25px;">Подробная сборка</a>
 				</div>
 			</div>
 		</div>	

@@ -54,13 +54,18 @@
 	<section id="welcome">
 		<div class="container">
 			<div class="row">
-				<div class="col-xl-6 col-lg-7 col-md-9 col-sm-12 col-7 ml-auto mr-auto">
-					<h1>Собери свой компьютер!</h1>
+				<div class="col-xl-8 col-lg-7 col-md-9 col-sm-12 col-7 ml-auto mr-auto">
+					<h3 style="text-align: center;">По всем вопросам можете обращаться на:</h1>
 				</div>
 				<div class=" w-100"></div>
+				
 
-				<div class="col-xl-4 col-lg-4 col-md-5 col-sm-7 col-7 ml-auto mr-auto ">
-					<!-- <h1>информация!</h1> -->
+				<div class="col-xl-6 col-lg-4 col-md-5 col-sm-7 col-7 ml-auto mr-auto ">
+					<a href="mailto:flyinsneakers@gmail.com" style="text-align: center; font-size: 25px; padding-left: 120px;">flyinsneakers@gmail.com</a>
+					<a href="mailto:Skype_HOH@mail.ru" style="text-align: center; font-size: 25px; padding-left: 120px;">Skype_HOH@mail.ru</a>
+					<a href="mailto:danila.lukin200000@gmail.com" style="text-align: center; font-size: 25px; padding-left: 120px;">danila.lukin200000@gmail.com</a>
+
+					
 				</div>
 			</div>
 		</div>	

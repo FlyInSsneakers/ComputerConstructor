@@ -26,43 +26,43 @@
 	<body>
 
 		<header>	
-		<div class="container-lg container-md-fluid ">
-			<div class="row align-items-center ">
-				<div class="col-xl-auto order-lg-0 col-lg offset-lg-0  ml-lg-0 col-md-3 order-sm-0 ml-md-auto col-sm-6 col-12">
-					<a href="index.php">Главная</a>				
-				</div>			
-				<div class="col-xl order-lg-1 col-lg col-md-3  order-sm-4 ml-md-auto mr-xs-auto col-sm-6 col">
-					<a href="">Информация</a> 
-				</div>
-				<div class="col-xl order-lg-2 col-lg col-md-3 order-sm-7 ml-md-auto col-sm-6 col">
-					<a href="">Руководства</a>				
-				</div>
-				<div class="col-xl order-lg-3 col-lg col-md-2 ml-md-auto mr-md-auto order-md-1 d-md-block d-none">
-					<img src="img/01.png" alt="">
-				</div>
-				<div class="col-xl order-lg-4 col-lg col-md-5 order-sm-5 ml-md-auto mr-md-auto text_right col-sm-6 col">
-					<a href="seach.php">Комплектующие</a>				
-				</div>
-				<div class="col-xl order-lg-5 col-lg col-md-4 order-sm-8 mr-md-auto col-sm-6 col">
-					<a href="designer.php">Конструктор</a>				
-				</div> 
-				<?php if(isset($_SESSION["login"])){
-					?>
-					<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
-						<a href="account.php">Профиль</a>	
+			<div class="container-lg container-md-fluid ">
+				<div class="row align-items-center ">
+					<div class="col-xl-auto order-lg-0 col-lg offset-lg-0  ml-lg-0 col-md-3 order-sm-0 ml-md-auto col-sm-6 col-12">
+						<a href="index.php">Главная</a>				
+					</div>			
+					<div class="col-xl order-lg-1 col-lg col-md-3  order-sm-4 ml-md-auto mr-xs-auto col-sm-6 col">
+						<a href="inf.php">Информация</a> 
 					</div>
-				<?php } else{?>
+					<div class="col-xl order-lg-2 col-lg col-md-3 order-sm-7 ml-md-auto col-sm-6 col">
+						<a href="instruction.php">Руководства</a>				
+					</div>
+					<div class="col-xl order-lg-3 col-lg col-md-2 ml-md-auto mr-md-auto order-md-1 d-md-block d-none">
+						<img src="img/01.png" alt="">
+					</div>
+					<div class="col-xl order-lg-4 col-lg col-md-5 order-sm-5 ml-md-auto mr-md-auto text_right col-sm-6 col">
+						<a href="seach.php">Комплектующие</a>				
+					</div>
+					<div class="col-xl order-lg-5 col-lg col-md-4 order-sm-8 mr-md-auto col-sm-6 col">
+						<a href="designer.php">Конструктор</a>				
+					</div> 
+					<?php if(isset($_SESSION["login"])){
+						?>
+						<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
+							<a href="account.php">Профиль</a>	
+						</div>
+					<?php } else{?>
 
 
-				<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
-					<a href="login.php">Авторизация</a>	
-				</div>
-				<?php } ?>
-				<div class="d-lg-none d-md-block w-100 order-sm-3 pd_t"></div>
-				<div class="d-lg-none d-md-block  w-100 order-sm-6 pd_t"></div>
-			</div>		
-		</div>
-	</header>
+						<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
+							<a href="login.php">Авторизация</a>	
+						</div>
+					<?php } ?>
+					<div class="d-lg-none d-md-block w-100 order-sm-3 pd_t"></div>
+					<div class="d-lg-none d-md-block  w-100 order-sm-6 pd_t"></div>
+				</div>		
+			</div>
+		</header>
 
 		<section id="work_space">
 			<div class="row">
@@ -100,21 +100,21 @@
 							<div class="col-7">
 								<input type="text" name="name" style="font-size: 25px;" class="save_button" 
 								<?php if(isset($_SESSION["name"])){?>	
-								value="<?=$_SESSION["name"]?>
-								<?php }?>">
+									value="<?=$_SESSION["name"]?>
+									<?php }?>">
+								</div>
+								<div class="col-5">
+									<button type="submit" class="save_button">
+										Сохранить сборку
+									</button>
+								</div>
 							</div>
-							<div class="col-5">
-								<button type="submit" class="save_button">
-									Сохранить сборку
-								</button>
-							</div>
-						</div>
-					</form>
+						</form>
 
+					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
-</body>
-</html>
+	</body>
+	</html>

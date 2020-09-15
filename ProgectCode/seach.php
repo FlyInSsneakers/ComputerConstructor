@@ -32,10 +32,10 @@ session_start();
 					<a href="index.php">Главная</a>				
 				</div>			
 				<div class="col-xl order-lg-1 col-lg col-md-3  order-sm-4 ml-md-auto mr-xs-auto col-sm-6 col">
-					<a href="">Информация</a> 
+					<a href="inf.php">Информация</a> 
 				</div>
 				<div class="col-xl order-lg-2 col-lg col-md-3 order-sm-7 ml-md-auto col-sm-6 col">
-					<a href="">Руководства</a>				
+					<a href="instruction.php">Руководства</a>				
 				</div>
 				<div class="col-xl order-lg-3 col-lg col-md-2 ml-md-auto mr-md-auto order-md-1 d-md-block d-none">
 					<img src="img/01.png" alt="">
@@ -54,9 +54,9 @@ session_start();
 				<?php } else{?>
 
 
-					<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
-						<a href="login.php">Авторизация</a>	
-					</div>
+				<div class="col-xl order-lg-6 col-lg mr-lg-0 col-md-4 order-sm-2 mr-md-auto text_right col-sm-6 col">
+					<a href="login.php">Авторизация</a>	
+				</div>
 				<?php } ?>
 				<div class="d-lg-none d-md-block w-100 order-sm-3 pd_t"></div>
 				<div class="d-lg-none d-md-block  w-100 order-sm-6 pd_t"></div>
